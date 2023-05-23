@@ -34,9 +34,7 @@ function loadPlanetsData () {
       reject(err)
     })
     .on("end", ()=>{
-      // console.log(results);
-      console.log(`No of Habitable Plantes Found : ${habitablePlanets?.length}`);
-      console.log("done");
+      // console.log(`No of Habitable Plantes Found : ${habitablePlanets?.length}`);
       resolve();
     })
 
