@@ -7,9 +7,20 @@ function httpGetAllLaunches(req,res) {
 
 function httpPostLaunch(req,res) {
   const launch = req.body;
-  console.log(launch);
+
+  const {mission, rocket, launchDate, target } = launch;
+
+  console.log(launchDate);
+  console.log(!mission || !rocket || !launchDate || !target);
+
+  // Inputs Validation
+  if (!mission || !rocket || !launchDate || !target) {
+    return res.status(400).json({
+      error :"Missing required launch property",
+    })
+  }
+
   launch.launchDate = new Date(launch.launchDate);
-  console.log(launch);
 
   // if (launch.launchDate.toString() === 'Invalid Date') {
   if (isNaN(launch.launchDate)) {
@@ -17,13 +28,6 @@ function httpPostLaunch(req,res) {
       error :"Invalid Launch Date",
     })
   } 
-  const {mission, rocket, launchDate, target } = launch;
-  // Inputs Validation
-  if (!mission || !rocket || !launchDate || !target) {
-    return res.status(400).json({
-      error :"Missing required launch property",
-    })
-  }
 
   addNewLaunch(launch);
   return res.status(201).json(launch)
