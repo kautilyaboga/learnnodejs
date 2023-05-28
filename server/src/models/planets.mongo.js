@@ -21,3 +21,5 @@ const plantesSchema = new mongoose.Schema({
   // },
 
 })
+
+module.exports = mongoose.model('Planet', plantesSchema);
