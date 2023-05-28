@@ -1,4 +1,4 @@
-const BASE_API_URL = 'http://localhost:8000';
+const BASE_API_URL = 'http://localhost:8000/v1';
 
 async function httpGetPlanets() {
   // Load planets and return as JSON.

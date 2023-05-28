@@ -1,31 +1,22 @@
 const http = require('http');
-const mongoose = require('mongoose');
-const app = require('./app')
 
 // Populates the process env with the variables in .env file.
 require('dotenv').config();
 
-const {loadPlanetsData} = require('./models/planets.model')
+const app = require('./app')
+const {mongoConnect} = require('./services/mongo')
+const {loadPlanetsData} = require('./models/planets.model');
+// const {loadLaunchesData} = require('./models/launches.model');
+
 
 const PORT = process.env.PORT || 8000;
 
-const MONGO_URL =  process.env.MONGO_URL;
-console.log(MONGO_URL);
-console.log(process.env);
-
 const server  = http.createServer(app);
 
-mongoose.connection.once('open', ()=>{
-  console.log('MongoDb connection is ready!');
-})
-
-mongoose.connection.on('error', (err)=>{
-  console.log(err)
-})
-
 async function startServer() {
-  await mongoose.connect(MONGO_URL);
+  await mongoConnect();
   await loadPlanetsData();
+  // await loadLaunchData();
 
   server.listen(PORT,()=>{
     console.log(`Listening to Port : ${PORT}`);

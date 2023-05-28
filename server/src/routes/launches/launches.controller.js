@@ -10,8 +10,8 @@ async function httpPostLaunch(req, res) {
 
   const { mission, rocket, launchDate, target } = launch;
 
-  console.log(launchDate);
-  console.log(!mission || !rocket || !launchDate || !target);
+  // console.log(launchDate);
+  // console.log(!mission || !rocket || !launchDate || !target);
 
   // Inputs Validation
   if (!mission || !rocket || !launchDate || !target) {

@@ -3,8 +3,7 @@ const express = require('express')
 const cors = require ('cors');
 const morgan = require('morgan');
 
-const planetsRouter = require('./routes/planets/planets.router')
-const launchesRouter = require('./routes/launches/launches.router')
+const v1api = require('./routes/v1api')
 
 const app = express();
 
@@ -23,8 +22,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,'../public')))
 // app.use(express.static('../public')) // Doesn't work
 
-app.use('/planets',planetsRouter)
-app.use('/launches',launchesRouter)
+
+app.use('/v1', v1api)
+// app.use('/v2', v2api)
 
 // This code needs to be at the bottom of the app middleware.
 // Code works without below code in local but to make sure it runs in every environment
