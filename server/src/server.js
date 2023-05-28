@@ -2,11 +2,16 @@ const http = require('http');
 const mongoose = require('mongoose');
 const app = require('./app')
 
+// Populates the process env with the variables in .env file.
+require('dotenv').config();
+
 const {loadPlanetsData} = require('./models/planets.model')
 
 const PORT = process.env.PORT || 8000;
 
 const MONGO_URL =  process.env.MONGO_URL;
+console.log(MONGO_URL);
+console.log(process.env);
 
 const server  = http.createServer(app);
 
