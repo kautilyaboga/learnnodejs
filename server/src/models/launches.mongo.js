@@ -25,7 +25,7 @@ const launchesSchema = new mongoose.Schema({
     // ref: 'Planet',
     // type : mongoose.ObjectId,
     type: String,
-    required : true,
+    // required : true,
   },
   upcoming : {
     type : Boolean,
@@ -33,7 +33,7 @@ const launchesSchema = new mongoose.Schema({
   },
   success : {
     type : Boolean,
-    required : true,
+    // required : true,
     default : true,
   },
   customers : [String],
